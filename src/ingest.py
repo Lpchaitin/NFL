@@ -23,6 +23,14 @@ SEASONAL = {
     "schedules": nfl.load_schedules,
     "snap_counts": nfl.load_snap_counts,
     "injuries": nfl.load_injuries,
+    "participation": nfl.load_participation,  # personnel, formation, coverage, pass rushers, routes
+    "ftn_charting": nfl.load_ftn_charting,    # play action, RPO, screens, motion, blitzers
+}
+
+# Seasons each source actually publishes (None = no limit). Out-of-range seasons are skipped.
+SEASON_LIMITS = {
+    "participation": (2016, 2025),
+    "ftn_charting": (2022, None),
 }
 
 # Datasets pulled as one full table -> data/raw/<name>.parquet
@@ -38,7 +46,11 @@ FULL = {
 def pull_seasonal(name: str, seasons: list[int], force: bool) -> None:
     out_dir = RAW_DIR / name
     out_dir.mkdir(parents=True, exist_ok=True)
+    lo, hi = SEASON_LIMITS.get(name, (None, None))
     for season in seasons:
+        if (lo and season < lo) or (hi and season > hi):
+            print(f"  n/a   {name} {season} (not published for this season)")
+            continue
         path = out_dir / f"{name}_{season}.parquet"
         if path.exists() and not force:
             print(f"  skip  {path.name} (cached)")

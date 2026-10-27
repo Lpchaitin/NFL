@@ -2,7 +2,7 @@
 
 NFL data analysis and modeling.
 
-Data comes from [nflverse](https://github.com/nflverse) through the [`nflreadpy`](https://github.com/nflverse/nflreadpy) package: play-by-play (with EPA and win probability), player stats, rosters, schedules, snap counts, injuries, the draft, the combine and contracts.
+Data comes from [nflverse](https://github.com/nflverse) through the [`nflreadpy`](https://github.com/nflverse/nflreadpy) package: play-by-play (with EPA and win probability), player stats, rosters, schedules, snap counts, injuries, participation (personnel, formations, coverages), FTN charting (play action, RPO, blitzers), the draft, the combine and contracts.
 
 ## Setup
 
@@ -34,3 +34,13 @@ nfl/
 │   └── ingest.py     # download + cache nflverse data
 └── requirements.txt
 ```
+
+## Roadmap
+
+| # | Project | Key questions |
+|---|---|---|
+| 1 | Year-to-year offense & defense breakdown | Team level, run vs. pass, tendencies (`notebooks/01_team_season_breakdown.ipynb`) |
+| 2 | Year-to-year offense & defense trends | Offense: personnel, run concepts, pass concepts. Defense: personnel, blitzes, coverages. What worked and what didn't? Which plays/concepts beat specific coverages/blitzes, and which coverages/blitzes beat specific plays/concepts? |
+| 3 | Team and QB kryptonite | Each team's offensive and defensive weak spots by season, and each quarterback's |
+| 4 | Coach & coordinator deep dives | What is Mike Macdonald's bread and butter? Kyle Shanahan's? |
+| 5 | Over- and underperformers | Each season's biggest over- and underperforming teams |
