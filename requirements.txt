@@ -1,0 +1,10 @@
+nflreadpy>=0.1.5
+polars
+pandas
+pyarrow
+numpy
+scikit-learn
+xgboost
+matplotlib
+seaborn
+jupyter
